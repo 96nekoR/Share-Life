@@ -15,30 +15,45 @@
   <link rel="stylesheet" href="css/style.css">
 
   <script>
-    ons.bootstrap()
-      .controller('HelloController', function() {
-        this.world = 'World';
-      });
+    ons.bootstrap();
     ons.ready(function() {
       console.log("Onsen UI is ready!");
     });
   </script>
 </head>
 <body>
-  <ons-page ng-controller="HelloController as hello">
-    <ons-toolbar>
-      <div class="center">Introduction</div>
-    </ons-toolbar>
+    <ons-page>
+        <ons-toolbar>
+            <div class="left">
+                <ons-toolbar-button>
+                    <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+        </ons-toolbar>
 
-    <div class="content" style="margin: 10px;">
-      <p>What is your name?</p>
-      <p>
-        <ons-input modifier="underbar" ng-model="hello.world" placeholder="Your name" float></ons-input>
-      </p>
-      <p>
-        Hello, {{ hello.world || 'stranger' }}!
-      </p>
-    </div>
-  </ons-page>
+        <ons-tabbar position="bottom" swipeable position="auto">
+            <ons-tab page="tab1.html" icon="ion-asterisk"></ons-tab>
+            <ons-tab page="tab2.html" icon="ion-home" active></ons-tab>
+            <ons-tab page="tab3.html" icon="ion-search"></ons-tab>
+        </ons-tabbar>
+    </ons-page>
+    
+    <template id="tab1.html">
+        <ons-page>
+            <p>item List</p>
+        </ons-page>
+    </template>
+    
+    <template id="tab2.html">
+        <ons-page>
+            <p>home</p>
+        </ons-page>
+    </template>
+    
+    <template id="tab3.html">
+        <ons-page>
+            <p>search</p>
+        </ons-page>
+    </template>
 </body>
 </html>
