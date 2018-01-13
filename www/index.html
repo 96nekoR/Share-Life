@@ -15,45 +15,108 @@
   <link rel="stylesheet" href="css/style.css">
 
   <script>
-    ons.bootstrap();
+    ons.bootstrap()
+    .controller("SwipePage", function($scope){
+        $scope.openMenu = function(){
+            const menu = document.getElementById("menu");
+            menu.open();
+        }
+        
+        $scope.loadPage = function(page){
+            const menu = document.getElementById("menu");
+            menu.close();
+            content.load(page, {animation: 'fade'});
+        }
+    });
     ons.ready(function() {
       console.log("Onsen UI is ready!");
     });
   </script>
 </head>
 <body>
-    <ons-page>
+    <ons-splitter var="mySplitter" ng-controller="SwipePage">
+        <ons-splitter-side id="menu" side="left" width="200px" collapse swipeable>
+            <ons-page>
+                <ons-list>
+                    <ons-list-item ng-click="loadPage('profile.html')" tappable>
+                        Profile
+                    </ons-list-item>
+                    <ons-list-item ng-click="loadPage('notifications.html')" tappable>
+                        Notifications
+                    </ons-list-item>
+                </ons-list>
+            </ons-page>
+        </ons-splitter-side>
+        <ons-splitter-content id="content" page="tab.html">
+        </ons-splitter-content>
+    </ons-splitter>
+    
+    <template id="tab.html">
+        <ons-page>
         <ons-toolbar>
             <div class="left">
-                <ons-toolbar-button>
+                <ons-toolbar-button ng-click="openMenu()">
                     <ons-icon icon="md-menu"></ons-icon>
+                </ons-toolbar-button>
+            </div>
+            
+            <div class="right">
+                <ons-toolbar-button>
+                    <ons-icon icon="comment" ng-click="loadPage('tweet.html')"></ons-icon>
                 </ons-toolbar-button>
             </div>
         </ons-toolbar>
 
-        <ons-tabbar position="bottom" swipeable position="auto">
-            <ons-tab page="tab1.html" icon="ion-asterisk"></ons-tab>
-            <ons-tab page="tab2.html" icon="ion-home" active></ons-tab>
-            <ons-tab page="tab3.html" icon="ion-search"></ons-tab>
+        <ons-tabbar position="bottom" swipeable position="auto" animation="none">
+            <ons-tab page="bookmark.html" icon="ion-asterisk"></ons-tab>
+            <ons-tab page="home.html" icon="ion-home" active></ons-tab>
+            <ons-tab page="search.html" icon="ion-search"></ons-tab>
         </ons-tabbar>
-    </ons-page>
+            <p>item List</p>
+        </ons-page>
+    </template>
     
-    <template id="tab1.html">
+    <template id="tweet.html">
+        <ons-page>
+            <p>tweet</p>
+        </ons-page>
+    </template>
+    
+    <!-- 上画面左のsplit Buttonの遷移ページ（はじめ） -->
+    <template id="profile.html">
+        <ons-page>
+            <p>profile</p>
+        </ons-page>
+    </template>
+    
+    <template id="notifications.html">
+        <ons-page>
+            <p>notification</p>
+        </ons-page>
+    </template>
+    <!-- 上画面左のsplit Buttonの遷移ページ（終わり） -->
+    
+
+    <!-- 全タブページ表示内容（はじめ） -->
+    <template id="bookmark.html">
         <ons-page>
             <p>item List</p>
         </ons-page>
     </template>
     
-    <template id="tab2.html">
+    <template id="home.html">
         <ons-page>
             <p>home</p>
         </ons-page>
     </template>
     
-    <template id="tab3.html">
+    <template id="search.html">
         <ons-page>
             <p>search</p>
         </ons-page>
     </template>
+    
+    <!-- 全タブページ表示内容（おわり） -->
+    
 </body>
 </html>
