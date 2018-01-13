@@ -1,0 +1,20 @@
+<ons-page>
+    <ons-toolbar>
+        <div class="left">
+            <ons-toolbar-button ng-click="openMenu()">
+                <ons-icon icon="md-menu"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+        <div class="right">
+            <ons-toolbar-button>
+                <ons-icon icon="comment" ng-click="loadPage('post.html')"></ons-icon>
+            </ons-toolbar-button>
+        </div>
+    </ons-toolbar>
+    <ons-tabbar position="bottom" swipeable position="auto" animation="none">
+        <ons-tab page="bookmark.html" icon="ion-asterisk"></ons-tab>
+        <ons-tab page="home.html" icon="ion-home" active></ons-tab>
+        <ons-tab page="search.html" icon="ion-search"></ons-tab>
+    </ons-tabbar>
+    <p>item List</p>
+</ons-page>
