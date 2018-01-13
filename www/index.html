@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -14,28 +14,10 @@
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
   <link rel="stylesheet" href="css/style.css">
 
-  <script>
-    ons.bootstrap()
-    .controller("SwipePage", function($scope){
-        $scope.openMenu = function(){
-            const menu = document.getElementById("menu");
-            menu.open();
-        }
-        
-        $scope.loadPage = function(page){
-            const menu = document.getElementById("menu");
-            menu.close();
-            content.load(page, {animation: 'fade'});
-        }
-    });
-    ons.ready(function() {
-      console.log("Onsen UI is ready!");
-    });
-  </script>
 </head>
 <body>
-    <ons-splitter var="mySplitter" ng-controller="SwipePage">
-        <ons-splitter-side id="menu" side="left" width="200px" collapse swipeable>
+    <ons-splitter ng-controller="NavigationBar">
+        <ons-splitter-side id="navigationbar-menu" side="left" width="200px" collapse swipeable>
             <ons-page>
                 <ons-list>
                     <ons-list-item ng-click="loadPage('profile.html')" tappable>
@@ -118,5 +100,7 @@
     
     <!-- 全タブページ表示内容（おわり） -->
     
+    <script src="js/navigationbar.js"></script>
+    <script src="js/tabbar.js"></script>
 </body>
 </html>
