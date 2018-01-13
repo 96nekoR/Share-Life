@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -14,31 +14,26 @@
   <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
   <link rel="stylesheet" href="css/style.css">
 
-  <script>
-    ons.bootstrap()
-      .controller('HelloController', function() {
-        this.world = 'World';
-      });
-    ons.ready(function() {
-      console.log("Onsen UI is ready!");
-    });
-  </script>
 </head>
 <body>
-  <ons-page ng-controller="HelloController as hello">
-    <ons-toolbar>
-      <div class="center">Introduction</div>
-    </ons-toolbar>
-
-    <div class="content" style="margin: 10px;">
-      <p>What is your name?</p>
-      <p>
-        <ons-input modifier="underbar" ng-model="hello.world" placeholder="Your name" float></ons-input>
-      </p>
-      <p>
-        Hello, {{ hello.world || 'stranger' }}!
-      </p>
-    </div>
-  </ons-page>
+    <ons-splitter ng-controller="NavigationBar">
+        <ons-splitter-side id="navigationbar-menu" side="left" width="200px" collapse swipeable>
+            <ons-page>
+                <ons-list>
+                    <ons-list-item ng-click="loadPage('profile.html')" tappable>
+                        Profile
+                    </ons-list-item>
+                    <ons-list-item ng-click="loadPage('notifications.html')" tappable>
+                        Notifications
+                    </ons-list-item>
+                </ons-list>
+            </ons-page>
+        </ons-splitter-side>
+        <ons-splitter-content id="content" page="tab.html">
+        </ons-splitter-content>
+    </ons-splitter>
+    
+    <script src="js/navigationbar.js"></script>
+    <script src="js/tabbar.js"></script>
 </body>
 </html>
